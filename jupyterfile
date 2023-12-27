@@ -1,4 +1,4 @@
-import numpy as np # linear algebra
+import numpy as np 
 import pandas as pd
 
 movies = pd.read_csv('tmdb_5000_movies.csv')
@@ -10,11 +10,11 @@ movies.head(2)
 
 credits.head()
 
-movies = movies.merge(credits,on='title')
+movies = movies.merge(credits,on='title')  #merging two datasets with respect to title column
 
 movies.head()
 
-movies = movies[['movie_id','title','overview','genres','keywords','cast','crew']]
+movies = movies[['movie_id','title','overview','genres','keywords','cast','crew']]  #selecting only columns that are important for model building
 
 movies.head()
 
@@ -78,7 +78,7 @@ new = movies.drop(columns=['overview','genres','keywords','cast','crew'])
 #new.head()
 new['tags'] = new['tags'].apply(lambda x: " ".join(x))
 new.head()
-
+#vectorization 
 from sklearn.feature_extraction.text import CountVectorizer
 cv = CountVectorizer(max_features=5000,stop_words='english')
     
